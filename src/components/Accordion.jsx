@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp, FaArrowRight } from 'react-icons/fa'; // Import the arrow icon
+import { motion } from 'framer-motion'; // Import Framer Motion
 
 function Accordion({ items }) {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -22,12 +23,14 @@ function Accordion({ items }) {
               <FaArrowRight className="ml-2" /> {/* Add the arrow icon */}
             </div>
           </button>
-          <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === index ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-              }`}
+          <motion.div
+            initial={{ maxHeight: 0, opacity: 0 }}
+            animate={{ maxHeight: activeIndex === index ? '100vh' : 0, opacity: activeIndex === index ? 1 : 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className="overflow-hidden"
           >
             <div className="p-4 text-white">{item.content}</div>
-          </div>
+          </motion.div>
         </div>
       ))}
     </div>
