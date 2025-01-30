@@ -20,7 +20,7 @@ function Accordion({ items }) {
             {item.title}
             <div className="flex items-center">
               {activeIndex === index ? <FaChevronUp /> : <FaChevronDown />}
-              <FaArrowRight className="ml-2" /> {/* Add the arrow icon */}
+         
             </div>
           </button>
           <motion.div
